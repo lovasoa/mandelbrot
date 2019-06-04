@@ -3,6 +3,7 @@
   import Point from "./Point.js";
   import Tile from "./Tile.js";
   import TileElement from "./Tile.svelte";
+  import About from "./About.svelte";
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import { readHash, setHash } from "./url_hash.js";
@@ -84,6 +85,8 @@
       h={tile.scale * zoom} />
   {/each}
 </PanZoom>
+
+<About />
 
 <svelte:head>
   <meta
