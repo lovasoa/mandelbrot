@@ -27,7 +27,7 @@ function testBulb(x, y) {
 
 const PALETTE_SIZE = 256;
 const palette = new Uint8ClampedArray(
-    gpalette('tol-sq', PALETTE_SIZE)
+    gpalette('tol-dv', PALETTE_SIZE)
         .flatMap(c =>
             c.match(/../g)
                 .map(s => parseInt(s, 16))

@@ -1637,6 +1637,7 @@ var mandelbrot = (function (exports) {
 	        .map(() => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16))
 	        .join("-");
 	}
+	//# sourceMappingURL=comlink.mjs.map
 
 	function mandelbrot(cx, cy, maxIters) {
 	    if (testBulb(cx, cy) || testCardioid(cx, cy)) return maxIters;
@@ -1664,7 +1665,7 @@ var mandelbrot = (function (exports) {
 
 	const PALETTE_SIZE = 256;
 	const palette = new Uint8ClampedArray(
-	    palette_1('tol-sq', PALETTE_SIZE)
+	    palette_1('tol-dv', PALETTE_SIZE)
 	        .flatMap(c =>
 	            c.match(/../g)
 	                .map(s => parseInt(s, 16))
