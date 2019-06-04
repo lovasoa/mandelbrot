@@ -8,4 +8,4 @@ This is a svelte application, it needs to be compiled.
 
 To develop: `npm run dev`.
 
-To build: `npm run build` (the resulting files are in the `build` folder).
+To build: `npm run build` (the resulting files are in the `public` folder).
