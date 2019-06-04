@@ -8,6 +8,8 @@
     top: 10%;
     left: 20%;
     width: 60%;
+    max-height: 80%;
+    overflow: auto;
     border-radius: 10px;
     background: linear-gradient(white, #eee);
     box-shadow: 1px 1px 5px beige;
