@@ -5,7 +5,7 @@
 <style>
   .info {
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 20%;
     width: 60%;
     border-radius: 10px;
