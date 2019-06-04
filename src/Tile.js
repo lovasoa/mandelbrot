@@ -18,6 +18,7 @@ export default class Tile {
 		this.scale = this.size / this.zoom;
 		this.position = new Point(this.x, this.y).scale(this.scale);
 		this.canvas = null;
+		this.rendered = false;
 	}
 	async loadOnCanvas(canvas) {
 		if (this.canvas === canvas) return;
@@ -27,6 +28,7 @@ export default class Tile {
 		let pxs = await mandelbrot_pixels(this.position, this.zoom, size);
 		let idata = new ImageData(pxs, size.x, size.y);
 		ctx.putImageData(idata, 0, 0);
+		this.rendered = true;
 	}
 }
 Tile.TILE_SIZE = 256;

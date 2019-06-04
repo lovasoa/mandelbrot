@@ -14,7 +14,7 @@
       dispatch("panzoom", e);
     });
   });
-</script>
+</script>`
 
 <style>
   div {

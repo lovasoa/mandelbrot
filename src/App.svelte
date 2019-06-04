@@ -51,7 +51,9 @@
         newIdxs.push(idx);
       }
     }
-    const allIdxs = Array.from(tiles.keys());
+    const allIdxs = Array.from(tiles)
+      .filter(([idx, tile]) => tile.rendered)
+      .map(([idx, tile]) => idx);
     allIdxs.splice(0, allIdxs.length + newIdxs.length - MAX_TILES);
     allIdxs.push(...newIdxs);
     allIdxs.sort(
