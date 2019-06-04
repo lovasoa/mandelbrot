@@ -8,6 +8,8 @@
   import { readHash, setHash } from "./url_hash.js";
 
   const MIN_ZOOM = 250;
+  const MAX_ZOOM = 1e16;
+
   let zoom = MIN_ZOOM;
   let pos = new Point(-0.5, 0); // Current position
   let size = new Point(0, 0); // Display size in pixels
@@ -21,7 +23,9 @@
 
   function onPanZoom({ detail: { x, y, dx, dy, dz } }) {
     const oldZoom = zoom;
-    zoom = Math.max(zoom * (1 - dz / 100), MIN_ZOOM);
+    zoom *= 1 - dz / 100;
+    zoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom));
+
     const p = new Point(x, y)
       .minus(size.times(1 / 2))
       .scale(1 / oldZoom - 1 / zoom);
