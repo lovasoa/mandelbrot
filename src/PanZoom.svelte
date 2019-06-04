@@ -14,7 +14,7 @@
       dispatch("panzoom", e);
     });
   });
-</script>`
+</script>
 
 <style>
   div {
@@ -23,7 +23,6 @@
     overflow: hidden;
     position: relative;
     margin: auto;
-    border: 0.5px solid grey;
   }
 </style>
 
