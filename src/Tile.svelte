@@ -10,10 +10,12 @@
   }
 </style>
 
-<canvas
-  bind:this={canvas}
-  style=" left: {Math.floor(x)}px; top: {Math.floor(y)}px; width: {Math.ceil(w)}px;
-  height: {Math.ceil(h)}px; "
-  class="tile"
-  width={tile.size}
-  height={tile.size} />
+{#if w > 1 && h > 1 && w}
+  <canvas
+    bind:this={canvas}
+    style=" left: {Math.floor(x)}px; top: {Math.floor(y)}px; width: {Math.ceil(w)}px;
+    height: {Math.ceil(h)}px; "
+    class="tile"
+    width={tile.size}
+    height={tile.size} />
+{/if}
