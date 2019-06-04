@@ -25,11 +25,6 @@
     margin: auto;
     border: 0.5px solid grey;
   }
-  .over {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
 </style>
 
 <div
@@ -38,5 +33,4 @@
   bind:clientWidth={size.x}
   bind:clientHeight={size.y}>
   <slot />
-  <div class="over" />
 </div>
