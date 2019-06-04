@@ -1,12 +1,15 @@
 import Point from './Point.js';
 
 export function readHash() {
-    if (typeof location === "undefined") return;
-    let params = decodeURIComponent(location.hash.slice(1));
-    if (params) {
-        let p = JSON.parse(params);
-        p.pos = new Point(p.pos.x, p.pos.y);
-        return p;
+    try {
+        let params = decodeURIComponent(location.hash.slice(1));
+        if (params) {
+            let p = JSON.parse(params);
+            p.pos = new Point(p.pos.x, p.pos.y);
+            return p;
+        }
+    } catch (e) {
+        console.log(e);
     }
 }
 
