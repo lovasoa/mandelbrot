@@ -79,10 +79,8 @@
   {#each Array.from(tiles.entries()) as [idx, tile] (tile)}
     <TileElement
       {tile}
-      x={(tile.position.x - pos.x) * zoom + size.x / 2}
-      y={(tile.position.y - pos.y) * zoom + size.y / 2}
-      w={tile.scale * zoom}
-      h={tile.scale * zoom} />
+      position={tile.screenPosition(pos, zoom, size)}
+      size={tile.dimensions.times(zoom)} />
   {/each}
 </PanZoom>
 

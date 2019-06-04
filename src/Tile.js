@@ -13,10 +13,10 @@ export default class Tile {
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.size = Tile.TILE_SIZE;
+		this.size = new Point(Tile.TILE_SIZE, Tile.TILE_SIZE);
 		this.zoom = 2 ** this.z;
-		this.scale = this.size / this.zoom;
-		this.position = new Point(this.x, this.y).scale(this.scale);
+		this.dimensions = this.size.times(1 / this.zoom);
+		this.position = new Point(this.x * this.dimensions.x, this.y * this.dimensions.y);
 		this.canvas = null;
 		this.rendered = false;
 	}
@@ -24,11 +24,14 @@ export default class Tile {
 		if (this.canvas === canvas) return;
 		this.canvas = canvas;
 		let ctx = canvas.getContext("2d");
-		let size = new Point(this.size, this.size);
-		let pxs = await mandelbrot_pixels(this.position, this.zoom, size);
-		let idata = new ImageData(pxs, size.x, size.y);
+		let pxs = await mandelbrot_pixels(this.position, this.zoom, this.size);
+		let idata = new ImageData(pxs, this.size.x, this.size.y);
 		ctx.putImageData(idata, 0, 0);
 		this.rendered = true;
+	}
+
+	screenPosition(pos, zoom, screenSize) {
+		return this.position.minus(pos).scale(zoom).add(screenSize.times(.5));
 	}
 }
 Tile.TILE_SIZE = 256;

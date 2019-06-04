@@ -1,7 +1,14 @@
 <script>
-  export let tile, x, y, w, h;
+  export let tile, position, size;
   let canvas;
+  let style;
   $: if (canvas) tile.loadOnCanvas(canvas);
+  $: style = [
+    `left:${Math.floor(position.x)}px`,
+    `top:${Math.floor(position.y)}px`,
+    `width:${Math.ceil(size.x)}px`,
+    `height:${Math.ceil(size.y)}px`
+  ].join(";");
 </script>
 
 <style>
@@ -10,12 +17,11 @@
   }
 </style>
 
-{#if w > 1 && h > 1 && w}
+{#if size.x > 1 && size.y > 1}
   <canvas
-    bind:this={canvas}
-    style=" left: {Math.floor(x)}px; top: {Math.floor(y)}px; width: {Math.ceil(w)}px;
-    height: {Math.ceil(h)}px; "
     class="tile"
-    width={tile.size}
-    height={tile.size} />
+    bind:this={canvas}
+    {style}
+    width={tile.size.x}
+    height={tile.size.y} />
 {/if}
