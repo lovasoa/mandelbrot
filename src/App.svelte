@@ -67,6 +67,13 @@
   $: tiles = updateTiles(tiles, zoom, pos, size);
 </script>
 
+<style>
+  :global(body) {
+    padding: 0;
+    margin: 0;
+  }
+</style>
+
 <PanZoom on:panzoom={onPanZoom} bind:size>
   {#each Array.from(tiles.entries()) as [idx, tile] (tile)}
     <TileElement

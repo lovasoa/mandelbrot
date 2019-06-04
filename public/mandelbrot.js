@@ -1637,7 +1637,6 @@ var mandelbrot = (function (exports) {
 	        .map(() => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16))
 	        .join("-");
 	}
-	//# sourceMappingURL=comlink.mjs.map
 
 	function mandelbrot(cx, cy, maxIters) {
 	    if (testBulb(cx, cy) || testCardioid(cx, cy)) return maxIters;
