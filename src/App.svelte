@@ -36,7 +36,6 @@
 
   const MAX_TILES = 2048;
   function updateTiles(tiles, zoom, pos, size) {
-    const newIdxs = [];
     const z = Math.max(0, Math.ceil(Math.log2(zoom)));
     let min = pos
       .minus(size.times(1 / (2 * zoom)))
@@ -49,18 +48,16 @@
         let idx = `${z},${i},${j}`;
         let tile = tiles.get(idx) || new Tile(i, j, z);
         tiles.set(idx, tile);
-        newIdxs.push(idx);
       }
     }
-    const allIdxs = Array.from(tiles)
-      .filter(([idx, tile]) => tile.rendered)
-      .map(([idx, tile]) => idx);
-    allIdxs.splice(0, allIdxs.length + newIdxs.length - MAX_TILES);
-    allIdxs.push(...newIdxs);
-    allIdxs.sort(
-      (a, b) => parseInt(a.split(",", 1)[0]) - parseInt(b.split(",", 1)[0])
-    );
-    return new Map(allIdxs.map(i => [i, tiles.get(i)]));
+    if (tiles.size > MAX_TILES) {
+      for (const [idx, tile] of tiles) {
+        if (!tile.isVisible(pos, zoom, size)) {
+          tiles.delete(idx);
+        }
+      }
+    }
+    return tiles;
   }
 
   let tiles = new Map();
@@ -77,11 +74,7 @@
 
 <PanZoom on:panzoom={onPanZoom} bind:size>
   {#each Array.from(tiles.entries()) as [idx, tile] (tile)}
-    <TileElement
-      {tile}
-      position={tile.screenPosition(pos, zoom, size)}
-      size={tile.dimensions.times(zoom)}
-      screenSize={size} />
+    <TileElement {tile} {pos} {zoom} screenSize={size} />
   {/each}
 </PanZoom>
 

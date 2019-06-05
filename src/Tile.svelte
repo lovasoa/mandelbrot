@@ -1,17 +1,14 @@
 <script>
-  export let tile, position, size, screenSize;
+  export let tile, pos, zoom, screenSize;
   let canvas;
-
+  let position;
+  let size;
   let rendered = false;
   let visible = false;
-  $: visible =
-    rendered &&
-    size.x >= 1 &&
-    size.y >= 1 &&
-    -size.x < position.x &&
-    position.x < screenSize.x &&
-    -size.y < position.y &&
-    position.y < screenSize.y;
+
+  $: position = tile.screenPosition(pos, zoom, screenSize);
+  $: size = tile.dimensions.times(zoom);
+  $: visible = rendered && tile.isVisible(pos, zoom, screenSize);
 
   $: if (canvas) {
     tile.loadOnCanvas(canvas).then(() => {
@@ -20,12 +17,14 @@
   }
 
   let style = "";
-  $: style = !visible ? "" : [
-    `left:${Math.floor(position.x)}px`,
-    `top:${Math.floor(position.y)}px`,
-    `width:${Math.ceil(size.x)}px`,
-    `height:${Math.ceil(size.y)}px`
-  ].join(";");
+  $: style = !visible
+    ? ""
+    : [
+        `left:${Math.floor(position.x)}px`,
+        `top:${Math.floor(position.y)}px`,
+        `width:${Math.ceil(size.x)}px`,
+        `height:${Math.ceil(size.y)}px`
+      ].join(";");
 </script>
 
 <style>

@@ -33,5 +33,16 @@ export default class Tile {
 	screenPosition(pos, zoom, screenSize) {
 		return this.position.minus(pos).scale(zoom).add(screenSize.times(.5));
 	}
+
+	isVisible(pos, zoom, screenSize) {
+		const screenPosition = this.screenPosition(pos, zoom, screenSize);
+		const size = this.dimensions.times(zoom);
+		return size.x >= 1 &&
+			size.y >= 1 &&
+			-size.x < screenPosition.x &&
+			screenPosition.x < screenSize.x &&
+			-size.y < screenPosition.y &&
+			screenPosition.y < screenSize.y;
+	}
 }
 Tile.TILE_SIZE = 256;
