@@ -57,7 +57,8 @@
         }
       }
     }
-    return tiles;
+    // Sort the tiles by increasing z so that they are rendered in order
+    return new Map([...tiles].sort(([x, a], [y, b]) => a.z - b.z));
   }
 
   let tiles = new Map();
@@ -73,7 +74,7 @@
 </style>
 
 <PanZoom on:panzoom={onPanZoom} bind:size>
-  {#each Array.from(tiles.entries()) as [idx, tile] (tile)}
+  {#each [...tiles] as [idx, tile] (tile)}
     <TileElement {tile} {pos} {zoom} screenSize={size} />
   {/each}
 </PanZoom>
