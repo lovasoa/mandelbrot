@@ -80,7 +80,8 @@
     <TileElement
       {tile}
       position={tile.screenPosition(pos, zoom, size)}
-      size={tile.dimensions.times(zoom)} />
+      size={tile.dimensions.times(zoom)}
+      screenSize={size} />
   {/each}
 </PanZoom>
 

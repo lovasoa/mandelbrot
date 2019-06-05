@@ -1,12 +1,24 @@
 <script>
-  export let tile, position, size;
+  export let tile, position, size, screenSize;
   let canvas;
+
   let rendered = false;
+  let visible = false;
+  $: visible =
+    rendered &&
+    size.x >= 1 &&
+    size.y >= 1 &&
+    -size.x < position.x &&
+    position.x < screenSize.x &&
+    -size.y < position.y &&
+    position.y < screenSize.y;
+
   $: if (canvas) {
     tile.loadOnCanvas(canvas).then(() => {
       rendered = true;
     });
   }
+
   let style;
   $: style = [
     `left:${Math.floor(position.x)}px`,
@@ -19,19 +31,17 @@
 <style>
   .tile {
     position: absolute;
-    display:none;
+    display: none;
   }
-  .tile.rendered {
+  .tile.visible {
     display: block;
   }
 </style>
 
-{#if size.x > 1 && size.y > 1}
-  <canvas
-    class="tile"
-    class:rendered
-    bind:this={canvas}
-    {style}
-    width={tile.size.x}
-    height={tile.size.y} />
-{/if}
+<canvas
+  class="tile"
+  class:visible
+  bind:this={canvas}
+  {style}
+  width={tile.size.x}
+  height={tile.size.y} />
