@@ -19,8 +19,8 @@
     });
   }
 
-  let style;
-  $: style = [
+  let style = "";
+  $: style = !visible ? "" : [
     `left:${Math.floor(position.x)}px`,
     `top:${Math.floor(position.y)}px`,
     `width:${Math.ceil(size.x)}px`,
