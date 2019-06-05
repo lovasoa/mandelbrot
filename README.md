@@ -15,7 +15,7 @@ A [svelte](https://svelte.dev/) application to visualize the mandelbrot set.
 <img width="100" height="100" alt="Screenshot 2019-06-04 at 23 28 11" src="https://user-images.githubusercontent.com/552629/58944445-29e6ca80-8782-11e9-9a17-e8abb81a9928.png">
 <img width="100" height="100" alt="Screenshot 2019-06-04 at 23 34 01" src="https://user-images.githubusercontent.com/552629/58944446-29e6ca80-8782-11e9-9324-349e73b1809e.png">
 <img width="100" height="100" alt="Screenshot 2019-06-04 at 23 35 46" src="https://user-images.githubusercontent.com/552629/58944447-29e6ca80-8782-11e9-891a-2f4101d32072.png">
-<imgwidth="100" height="100" alt="Screenshot 2019-06-04 at 23 38 48" src="https://user-images.githubusercontent.com/552629/58944448-2a7f6100-8782-11e9-818a-3bd0a45c7c55.png">
+<img width="100" height="100" alt="Screenshot 2019-06-04 at 23 38 48" src="https://user-images.githubusercontent.com/552629/58944448-2a7f6100-8782-11e9-818a-3bd0a45c7c55.png">
 <img width="100" height="100" alt="Screenshot 2019-06-05 at 00 01 02" src="https://user-images.githubusercontent.com/552629/58944449-2a7f6100-8782-11e9-8f59-fcc9485e1653.png">
 <img width="100" height="100" alt="Screenshot 2019-06-05 at 00 13 24" src="https://user-images.githubusercontent.com/552629/58944453-2b17f780-8782-11e9-8518-0085b53feb4b.png">
 <img width="100" height="100" alt="Screenshot 2019-06-05 at 00 14 13" src="https://user-images.githubusercontent.com/552629/58944454-2b17f780-8782-11e9-9ff6-68dffc5f8f06.png">
