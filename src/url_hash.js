@@ -18,6 +18,8 @@ let setHashTimeout = null;
 export function setHash(pos, zoom) {
     clearTimeout(setHashTimeout);
     setHashTimeout = setTimeout(_ => {
-        window.location.hash = JSON.stringify({ pos, zoom });
+        const state = { pos, zoom };
+        const url = '#' + JSON.stringify(state);
+        window.history.replaceState(state, document.title, url);
     }, 100);
 }
