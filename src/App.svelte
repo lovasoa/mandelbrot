@@ -22,10 +22,14 @@
   updateHash();
   $: setHash(pos, zoom);
 
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
   function onPanZoom({ detail: { x, y, dx, dy, dz } }) {
     const oldZoom = zoom;
-    zoom *= 1 - dz / 100;
-    zoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom));
+    zoom *= clamp(1 - dz / 100, 0.5, 2);
+    zoom = clamp(zoom, MIN_ZOOM, MAX_ZOOM);
 
     const p = new Point(x, y)
       .minus(size.times(1 / 2))
