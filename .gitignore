@@ -1,3 +1,5 @@
 .DS_Store
 node_modules
 public/bundle.*
+public/mandelbrot.js
+public/mandelbrot.js.map
