@@ -3,6 +3,8 @@
 A [svelte](https://svelte.dev/) application to visualize the mandelbrot set.
 [Try online](https://mandelbrot-svelte.netlify.com/).
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/054ffd27-8108-4986-b57c-5d7b22b33337/deploy-status)](https://app.netlify.com/sites/mandelbrot-svelte/deploys)
+
 ## Screenshots
 
 <table>
